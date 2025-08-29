@@ -1,0 +1,54 @@
+public class Car {
+    private String model;
+    private int year;
+
+    // 1. Default constructor
+    public Car() {
+        this.model = "Unknown";
+        this.year = 0;
+    }
+
+    // 2. Parameterized constructor
+    public Car(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+
+    // 3. Copy constructor
+    public Car(Car other) {
+        this.model = other.model;
+        this.year = other.year;
+    }
+
+    // For displaying car details
+    @Override
+    public String toString() {
+        return "Car Model: " + model + ", Year: " + year;
+    }
+
+    // Sample usage
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+        System.out.print("Enter Car Model: ");
+        String inputModel = scanner.nextLine();
+
+        System.out.print("Enter Car Year: ");
+        int inputYear = scanner.nextInt();
+
+        Car defaultCar = new Car();
+        Car userCar = new Car(inputModel, inputYear);
+        Car copiedCar = new Car(userCar);
+
+        System.out.println("\nDefault Car:");
+        System.out.println(defaultCar);
+
+        System.out.println("\nUser Car:");
+        System.out.println(userCar);
+
+        System.out.println("\nCopied Car:");
+        System.out.println(copiedCar);
+
+        scanner.close();
+    }
+}
