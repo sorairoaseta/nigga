@@ -1,0 +1,36 @@
+import javax.swing.JOptionPane;
+
+class BankAccount {
+    private String accountHolder;
+    private double balance;
+
+    public BankAccount(String accountHolder, double balance) {
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+    }
+
+    public BankAccount(BankAccount other) {
+        this.accountHolder = other.accountHolder;
+        this.balance = other.balance;
+    }
+
+    public String getAccountDetails() {
+        return "Account Holder: " + accountHolder + "\nBalance: " + balance;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        String name = JOptionPane.showInputDialog("Enter Account Holder:");
+        String balanceStr = JOptionPane.showInputDialog("Enter Balance:");
+        double balance = Double.parseDouble(balanceStr);
+
+        BankAccount originalAccount = new BankAccount(name, balance);
+        BankAccount copiedAccount = new BankAccount(originalAccount);
+
+        String output = "Original Account:\n" + originalAccount.getAccountDetails() +
+                        "\n\nCopied Account:\n" + copiedAccount.getAccountDetails();
+
+        JOptionPane.showMessageDialog(null, output);
+    }
+}
